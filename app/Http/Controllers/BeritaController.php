@@ -46,9 +46,10 @@ public function store(Request $request)
     return redirect()->route('berita.index')->with('success', 'Berita berhasil ditambahkan.');
 }
 
-public function edit(Berita $berita)
+public function edit($id)
 {
     $kategori = Kategori::all();
+    $berita = Berita::findOrFail($id);
     return view('admin.berita.edit', compact('berita', 'kategori'));
 }
 
