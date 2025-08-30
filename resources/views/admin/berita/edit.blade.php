@@ -6,7 +6,7 @@
  <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4 mb-4">Tambah Berita</h1>
+                        <h1 class="mt-4 mb-4">Ubah Berita</h1>
                         <div class="card mb-4">
                             <div class="card-body">
                                 <form method="POST" enctype="multipart/form-data" action="{{ route('berita.update', $berita) }}">
@@ -32,9 +32,12 @@
                                     </div>
                                     <div class="mb-3">
                                          <label>Gambar Baru (Opsional)</label>
-                                         <input type="file" name="gambar" class="form-control">
+                                         <input type="file" name="gambar">
+                                       @if ($berita->gambar)
+                                            <img src="{{ asset('storage/'.$berita->gambar) }}" alt="preview" width="120">
+                                        @endif
                                     </div>
-                                    <button class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </form>
                                 </div>
                             </div>

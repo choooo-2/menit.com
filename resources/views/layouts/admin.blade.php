@@ -53,13 +53,13 @@
                                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                         Kategori
                                  </a>
-                            <a class="nav-link" href="charts.html">
+                                <a class="nav-link" href="{{route('berita.index')}}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                    Berita
+                                </a>
+                                 <a class="nav-link" href="{{route('user.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Users
-                            </a>
-                              <a class="nav-link" href="{{route('berita.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Berita
                             </a>
                         </div>
                     </div>

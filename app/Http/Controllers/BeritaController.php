@@ -67,7 +67,7 @@ public function update(Request $request, Berita $berita)
         $berita->gambar = $path;
     }
 
-    $berita->update([
+        $berita->update([
         'judul' => $request->judul,
         'slug' => Str::slug($request->judul),
         'isi' => $request->isi,
