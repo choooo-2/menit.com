@@ -15,10 +15,17 @@ class Berita extends Model
         'isi',
         'gambar',
         'kategori_id',
-        'user_id'
+        'user_id',
+        'views'
     ];
 
      public function kategori() {
         return $this->belongsTo(Kategori::class, 'kategori_id');
     }
+    
+    public function komentars()
+{
+    return $this->hasMany(Komentar::class);
+}
+
 }

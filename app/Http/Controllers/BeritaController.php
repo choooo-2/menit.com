@@ -82,4 +82,16 @@ public function destroy(Berita $berita)
     $berita->delete();
     return redirect()->route('berita.index')->with('success', 'Berita dihapus.');
 }
+
+public function show($id)
+{
+    $berita = Berita::findOrFail($id);
+
+    // Tambah jumlah views
+    $berita->increment('views');
+
+    return view('berita.show', compact('berita'));
+}
+
+
 }

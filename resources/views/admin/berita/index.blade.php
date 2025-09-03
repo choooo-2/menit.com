@@ -17,6 +17,7 @@
                                             <th>#</th>
                                             <th>Judul</th>
                                             <th>Kategori</th>
+                                            <th>Views</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -26,6 +27,7 @@
                                             <td>{{($loop->iteration)}}</td>
                                             <td>{{ $b->judul }}</td>
                                             <td>{{ $b->kategori->nama }}</td>
+                                            <td>{{$b->views}} x dilihat</td>
                                             <td>
                                                 <a href="{{ route('berita.edit', $b) }}" class="btn btn-sm btn-warning">Edit</a>
                                                 <form action="{{ route('berita.destroy', $b) }}" method="POST" class="d-inline">

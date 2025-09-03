@@ -1,19 +1,27 @@
+@extends('layouts.web')
+@section('content')
+
+
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>News HTML-5 Template </title>
+         <title>News HTML-5 Template </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/demo/img/favicon.ico')}}">
 
 		<!-- CSS here -->
             <link rel="stylesheet" href="{{asset('assets/demo/css/bootstrap.min.css')}}">
             <link rel="stylesheet" href="{{asset('assets/demo/css/owl.carousel.min.css')}}">
+
             <link rel="stylesheet" href="{{asset('assets/demo/css/ticker-style.css')}}">
+
             <link rel="stylesheet" href="{{asset('assets/demo/css/flaticon.css')}}">
+
             <link rel="stylesheet" href="{{asset('assets/demo/css/slicknav.css')}}">
             <link rel="stylesheet" href="{{asset('assets/demo/css/animate.min.css')}}">
             <link rel="stylesheet" href="{{asset('assets/demo/css/magnific-popup.css')}}">
@@ -22,13 +30,13 @@
             <link rel="stylesheet" href="{{asset('assets/demo/css/slick.css')}}">
             <link rel="stylesheet" href="{{asset('assets/demo/css/nice-select.css')}}">
             <link rel="stylesheet" href="{{asset('assets/demo/css/style.css')}}">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+            <link rel="stylesheet" href="{{asset('assets/demo/css/responsive.css')}}">
    </head>
 
    <body>
        
     <!-- Preloader Start -->
-    <!-- <div id="preloader-active">
+    <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
@@ -37,7 +45,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <!-- Preloader Start -->
 
     <header>
@@ -50,16 +58,7 @@
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left">
                                     <ul>     
-                                       <div class="text-white mb-4">
-                                            📅 {{ \Carbon\Carbon::now()->translatedFormat('l, d F Y') }}
-                                        </div>
-                                    </ul>
-                                </div>
-                                <div class="header-info-right">
-                                    <ul class="header-social">    
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                       <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                        <li><i class="far fa-calendar-alt"></i> {{ $berita->created_at->format('d M Y') }} |</li>
                                     </ul>
                                 </div>
                             </div>
@@ -72,7 +71,7 @@
                             <!-- Logo -->
                             <div class="col-xl-3 col-lg-3 col-md-3">
                                 <div class="logo">
-                                    <a href="index.html"><img src="{{asset('assets/demo/img/logo/logo.png')}}" alt=""></a>
+                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-9 col-md-9">
@@ -91,38 +90,6 @@
                                     <div class="sticky-logo">
                                         <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
                                     </div>
-                                <!-- Main-menu -->
-                                <div class="main-menu d-none d-md-block">
-                                    <nav>                  
-                                        <ul id="navigation">    
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="categori.html">Category</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="latest_news.html">Latest News</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="elements.html">Element</a></li>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="details.html">Categori Details</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>             
-                            <div class="col-xl-2 col-lg-2 col-md-4">
-                                <div class="header-right-btn f-right d-none d-lg-block">
-                                    <i class="fas fa-search special-tag"></i>
-                                    <div class="search-box">
-                                        <form action="#">
-                                            <input type="text" placeholder="Search">
-                                            
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
                             <!-- Mobile Menu -->
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-md-none"></div>
@@ -136,52 +103,127 @@
     </header>
 
     <main>
-    <!-- Trending Area Start -->
-    <div class="trending-area fix">
-        <div class="container">
-            <div class="trending-main">
-                <!-- Trending Tittle -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="trending-tittle">
-                            <strong>Berita Terbaru</strong>
-                            <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
-                            <div class="trending-animated">
-                                <ul id="js-news" class="js-hidden">
-                                    <li class="news-item">Apakah Kamu Mau Bermain Dengan Nana?</li>
-                                    <li class="news-item">Hah, Tidak? aku membosankan?</li>
-                                    <li class="news-item">Lebih Baik Baca Berita Ini</li>
-                                </ul>
+        <!-- About US Start -->
+        <div class="about-area">
+            <div class="container">
+                   
+                   <div class="row">
+                        <div class="col-lg-8">
+                            <!-- Trending Tittle -->
+                            <div class="about-right mb-90">
+                                <div class="about-img">
+                                     <img src="{{ asset('storage/' . $berita->gambar) }}" class="img-fluid mb-4" alt="{{ $berita->judul }}">
+                                </div>
+                                <div class="section-tittle mb-30 pt-30">
+                                    <h2 class="mb-2">{{ $berita->judul }}</h2>
+                                </div>
+                                <div class="about-prea">
+                                   <p class="about-pera1 mb-25">
+                                    {!! $berita->isi !!}
+                                </div> 
+                                               
+                                    <div class="social-share pt-30">
+                                    <div class="section-tittle">
+                                        <h3 class="mr-20">Share:</h3>
+                                        <ul>
+                                            <li><a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a></li>
+                                            <li><a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a></li>
+                                            <li><a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a></li>
+                                            <li><a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- From -->
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <form class="form-contact contact_form mb-80" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <textarea class="form-control w-100 error" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder="Enter Message"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input class="form-control error" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input class="form-control error" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <input class="form-control error" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mt-3">
+                                            <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                 @yield('content') 
-        
-    <!--Start pagination -->
-    <div class="pagination-area pb-45 text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="single-wrap d-flex justify-content-center">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-start">
-                              <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow roted"></span></a></li>
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                              <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow right-arrow"></span></a></li>
-                            </ul>
-                          </nav>
-                    </div>
-                </div>
+                        <div class="col-lg-4">
+                            <!-- Section Tittle -->
+                            <div class="section-tittle mb-40">
+                                <h3>Follow Us</h3>
+                            </div>
+                            <!-- Flow Socail -->
+                            <div class="single-follow mb-45">
+                                <div class="single-box">
+                                    <div class="follow-us d-flex align-items-center">
+                                        <div class="follow-social">
+                                            <a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a>
+                                        </div>
+                                        <div class="follow-count">  
+                                            <span>8,045</span>
+                                            <p>Fans</p>
+                                        </div>
+                                    </div> 
+                                    <div class="follow-us d-flex align-items-center">
+                                        <div class="follow-social">
+                                            <a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a>
+                                        </div>
+                                        <div class="follow-count">
+                                            <span>8,045</span>
+                                            <p>Fans</p>
+                                        </div>
+                                    </div>
+                                        <div class="follow-us d-flex align-items-center">
+                                        <div class="follow-social">
+                                            <a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a>
+                                        </div>
+                                        <div class="follow-count">
+                                            <span>8,045</span>
+                                            <p>Fans</p>
+                                        </div>
+                                    </div>
+                                    <div class="follow-us d-flex align-items-center">
+                                        <div class="follow-social">
+                                            <a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a>
+                                        </div>
+                                        <div class="follow-count">
+                                            <span>8,045</span>
+                                            <p>Fans</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- New Poster -->
+                            <div class="news-poster d-none d-lg-block">
+                                <img src="assets/img/news/news_card.jpg" alt="">
+                            </div>
+                        </div>
+                   </div>
             </div>
         </div>
-    </div>
-    <!-- End pagination  -->
+        <!-- About US End -->
     </main>
-    
+
    <footer>
        <!-- Footer Start-->
        <div class="footer-area footer-padding fix">
@@ -284,6 +326,7 @@
 	
 		<!-- All JS Custom Plugins Link Here here -->
         <script src="{{asset('./assets/demo/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+		
 		<!-- Jquery, Popper, Bootstrap -->
 		<script src="{{asset('./assets/demo/js/vendor/jquery-1.12.4.min.js')}}"></script>
         <script src="{{asset('./assets/demo/js/popper.min.js')}}"></script>
@@ -324,3 +367,4 @@
     </body>
 </html>
 
+@endsection
