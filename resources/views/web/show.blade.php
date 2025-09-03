@@ -116,6 +116,7 @@
                                 </div>
                                 <div class="section-tittle mb-30 pt-30">
                                     <h2 class="mb-2">{{ $berita->judul }}</h2>
+                                <div class="news-views"><i class="far fa-eye"></i> {{ $berita->views}}x dilihat</div>
                                 </div>
                                 <div class="about-prea">
                                    <p class="about-pera1 mb-25">
