@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class BeritaController extends Controller
 {
     
+
 public function index()
 {
     $berita = Auth::user()->role === 'admin' ? Berita::latest()->get() : Berita::where('user_id', Auth::id())->latest()->get();

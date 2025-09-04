@@ -33,11 +33,49 @@
                                 </div>
                                 <div class="d-flex">
                                     <a href="{{ route('profile.edit') }} " class="btn btn-primary me-2">Edit</a>
-                                    <form action="{{ route('profile.destroy') }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button onclick="return confirm('Apakah anda yakin?')" type="submit" class="btn btn-danger">Hapus</button>
-                                    </form>
+                                    <!-- Tombol untuk buka modal -->
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                                            Hapus Akun
+                                        </button>
+                                        <!-- Modal -->
+
+                                        <!-- Modal Konfirmasi Hapus Akun -->
+                                                <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+
+                                                    <!-- Header -->
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteAccountModalLabel">Konfirmasi Hapus Akun</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+
+                                                    <!-- Body -->
+                                                    <div class="modal-body">
+                                                        <p class="text-danger">Ingin menghapus akun? Masukan password anda.</p>
+
+                                                        <form id="deleteAccountForm" method="POST" action="{{ route('profile.destroy') }}">
+                                                            @csrf
+                                                            @method('DELETE')
+
+                                                            <div class="mb-3">
+                                                                <label for="password" class="form-label">Password</label>
+                                                                <input id="password" type="password" name="password" class="form-control" required>
+                                                            </div>
+                                                        </form>
+                                                </div>
+
+                                                <!-- Footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                    <button type="submit" class="btn btn-danger" form="deleteAccountForm">Hapus Akun</button>
+                                                </div>
+
+                                                </div>
+                                            </div>
+                                            </div>
+
+
                                     </div>
                                   
                             </div>

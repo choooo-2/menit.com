@@ -13,7 +13,9 @@ class WebController extends Controller
     public function index()
     {
          $berita = Berita::all();
-        return view('web.home', compact('berita'));
+         $viral = Berita::orderBy('views', 'desc')->first();
+
+        return view('web.home', compact('berita', 'viral'));
     }
 
     /**
@@ -42,7 +44,12 @@ class WebController extends Controller
          $berita = Berita::where('slug', $slug)->first();
 
           // Tambah jumlah views
-          $berita->increment('views');
+          if ($berita) {
+                $berita->increment('views');
+            } else {
+                 abort(404, 'Berita tidak ditemukan');
+}
+
 
         return view('web.show', compact('berita'));
     }
@@ -74,9 +81,8 @@ class WebController extends Controller
     public function kategori($id)
     {
         //
-        $berita = Berita::where('kategori_id', $id)->paginate(1);
+        $berita = Berita::where('kategori_id', $id)->paginate(2);
         return view('web.kategori', compact('berita'));
     }
-
 
 }

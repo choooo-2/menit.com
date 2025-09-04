@@ -26,7 +26,7 @@
 
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                    <label for="exampleFormControlInput1" class="form-label">Password</label>
                                 <input type="password" value="........" name="password"  class="form-control">
 
                                 </div>
