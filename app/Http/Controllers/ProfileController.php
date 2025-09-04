@@ -9,8 +9,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+use function Laravel\Prompts\alert;
+
 class ProfileController extends Controller
 {
+
+    
+    public function show()
+    {
+        $user = Auth::user();
+        return view('profile.show', compact('user'));
+    }
+
     /**
      * Display the user's profile form.
      */
@@ -34,7 +44,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.show')->with('Success', 'Akun berhasil diperbarui.');
     }
 
     /**

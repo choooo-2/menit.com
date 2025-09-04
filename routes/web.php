@@ -10,6 +10,7 @@ use App\Http\Controllers\BeritaPenulisController;
 use App\Http\Controllers\KategoriPenulisController;
 use App\Http\Controllers\PenulisController;
 use App\Http\Controllers\Webcontroller;
+use App\Http\Controllers\KomentarController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -28,12 +29,16 @@ use Illuminate\Support\Facades\Auth;
  Route::get('/', [WebController::class, 'index'])->name('web.index');
  Route::get('/berita/{slug}', [WebController::class, 'show'])->name('web.show');
  Route::get('/kategori/{id}', [WebController::class, 'kategori'])->name('web.kategori');
+ Route::post('/berita/{id}/komentar', [KomentarController::class, 'store'])->name('komentar.store');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/profile/my-profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

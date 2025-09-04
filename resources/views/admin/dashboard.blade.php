@@ -16,9 +16,9 @@
 
                 <div class="card-body">
 
-                    <h5 class="card-title">Total Berita Terbaru Hari ini</h5>
+                    <h5 class="card-title">Total Berita</h5>
 
-                    <p class="fs-4">{{ $jumlahBerita ?? '0' }}</p>
+                    <p class="fs-4">{{ $berita->count()?? '0' }}</p>
 
                 </div>
 

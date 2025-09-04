@@ -35,18 +35,7 @@
 
    <body>
        
-    <!-- Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/logo.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Preloader Start -->
+    
 
     <header>
         <!-- Header Start -->
@@ -122,99 +111,25 @@
                                    <p class="about-pera1 mb-25">
                                     {!! $berita->isi !!}
                                 </div> 
-                                               
-                                    <div class="social-share pt-30">
-                                    <div class="section-tittle">
-                                        <h3 class="mr-20">Share:</h3>
-                                        <ul>
-                                            <li><a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a></li>
-                                            <li><a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a></li>
-                                            <li><a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a></li>
-                                            <li><a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a></li>
-                                        </ul>
-                                    </div>
+                            </div>
+
+                           <h3>Komentar</h3>
+
+                            <form action="{{ route('komentar.store', $berita->id) }}" method="POST">
+                                @csrf
+                                <textarea name="isi" class="form-control mb-2" rows="3" placeholder="Tulis komentar..."></textarea>
+                                <button type="submit" class="btn btn-primary btn-sm">Kirim</button>
+                            </form>
+
+                            @foreach($berita->komentars as $komen)
+                                <div class="mt-3 p-2 border rounded mb-2">
+                                    <strong>{{ $komen->user->name ?? 'Anonim' }}</strong>
+                                    <p class="mb-0">{{ $komen->isi }}</p>
+                                    <small class="text-muted">{{ $komen->created_at->diffForHumans() }}</small>
                                 </div>
-                            </div>
-                            <!-- From -->
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <form class="form-contact contact_form mb-80" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <textarea class="form-control w-100 error" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder="Enter Message"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input class="form-control error" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input class="form-control error" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <input class="form-control error" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mt-3">
-                                            <button type="submit" class="button button-contactForm boxed-btn">Send</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <!-- Section Tittle -->
-                            <div class="section-tittle mb-40">
-                                <h3>Follow Us</h3>
-                            </div>
-                            <!-- Flow Socail -->
-                            <div class="single-follow mb-45">
-                                <div class="single-box">
-                                    <div class="follow-us d-flex align-items-center">
-                                        <div class="follow-social">
-                                            <a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a>
-                                        </div>
-                                        <div class="follow-count">  
-                                            <span>8,045</span>
-                                            <p>Fans</p>
-                                        </div>
-                                    </div> 
-                                    <div class="follow-us d-flex align-items-center">
-                                        <div class="follow-social">
-                                            <a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a>
-                                        </div>
-                                        <div class="follow-count">
-                                            <span>8,045</span>
-                                            <p>Fans</p>
-                                        </div>
-                                    </div>
-                                        <div class="follow-us d-flex align-items-center">
-                                        <div class="follow-social">
-                                            <a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a>
-                                        </div>
-                                        <div class="follow-count">
-                                            <span>8,045</span>
-                                            <p>Fans</p>
-                                        </div>
-                                    </div>
-                                    <div class="follow-us d-flex align-items-center">
-                                        <div class="follow-social">
-                                            <a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a>
-                                        </div>
-                                        <div class="follow-count">
-                                            <span>8,045</span>
-                                            <p>Fans</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- New Poster -->
+                            @endforeach
+
+                        </div>  
                             <div class="news-poster d-none d-lg-block">
                                 <img src="assets/img/news/news_card.jpg" alt="">
                             </div>
