@@ -61,6 +61,7 @@
                                 <a class="nav-link" href="{{route('penulis.berita.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Berita
+                                </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

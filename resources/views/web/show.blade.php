@@ -47,8 +47,7 @@
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left">
                                     <ul>     
-                                        <li><i class="far fa-calendar-alt"></i> {{ $berita->created_at->format('d M Y') }} | 
-                                        <p>Penulis: {{ optional($berita->user)->name ?? 'Tidak diketahui' }}</p></li>
+                                        <li><i class="far fa-calendar-alt"></i>{{ $berita->created_at->format('d M Y') }} | <p>Penulis: {{ optional($berita->user)->name ?? 'Tidak diketahui' }}</p></li>
                                     </ul>
                                 </div>
                             </div>
